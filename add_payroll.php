@@ -2,7 +2,7 @@
 include 'db.php';
 $username = $_GET['username'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+if($_SERVER['REQUEST_METHOD'] === 'POST') 
 {
         $emp_name = $_POST['emp_name'];
         $emp_id = $_POST['emp_id'];
@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     } 
     else 
     {
-    {
         //create query
         $sql = "INSERT INTO payroll (emp_name, emp_id, basic_salary, allowance, deductions, net_salary, pay_date, status, username)
                 VALUES ('$emp_name', '$emp_id', '$basic_salary', '$allowance', '$deductions', '$net_salary', '$pay_date', '$status', '$username')";
@@ -34,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
           echo "Error: " . $conn->error;
         }
-    }
     }
 }
 ?>

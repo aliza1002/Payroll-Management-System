@@ -81,7 +81,7 @@ $username = $_GET['username'];
     ?>
 
     <br>
-    <a href="view_payroll.php?username=<?php echo $username; ?>" class="button">⬅ Back to Dashboard</a>
+    <a href="dashboard.php?username=<?php echo $username; ?>" class="button">⬅ Back to Dashboard</a>
 </div>
 </body>
 </html>
