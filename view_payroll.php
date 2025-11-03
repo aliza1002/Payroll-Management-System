@@ -25,6 +25,7 @@
         <th>Net Salary</th>
         <th>Pay Date</th>
         <th>Status</th>
+        <th>Designation</th>
         <th>Action</th>
         </tr>";
 
@@ -40,6 +41,7 @@
           <td> ". $row['net_salary'] ." </td>
           <td> ". $row['pay_date'] ." </td>
           <td> ". $row['status'] ." </td>
+          <td> ". $row['designation'] ."</td>
           <td>
             <a href='update_payroll.php?id= ". $row['id'] ."&username=$username '>Update</a> | 
             <a href='delete_payroll.php?id= ". $row['id'] ."&username=$username '>Delete</a> 

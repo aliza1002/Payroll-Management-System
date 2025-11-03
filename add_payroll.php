@@ -12,6 +12,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
         $net_salary = $basic_salary + $allowance - $deductions;
         $pay_date = $_POST['pay_date'];
         $status = $_POST['status'];
+        $designation = $_POST['designation'];
 
     if ($basic_salary <= 0 || $allowance < 0 || $deductions < 0) 
     {
@@ -20,8 +21,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
     else 
     {
         //create query
-        $sql = "INSERT INTO payroll (emp_name, emp_id, basic_salary, allowance, deductions, net_salary, pay_date, status, username)
-                VALUES ('$emp_name', '$emp_id', '$basic_salary', '$allowance', '$deductions', '$net_salary', '$pay_date', '$status', '$username')";
+        $sql = "INSERT INTO payroll (emp_name, emp_id, basic_salary, allowance, deductions, net_salary, pay_date, status, username, designation)
+                VALUES ('$emp_name', '$emp_id', '$basic_salary', '$allowance', '$deductions', '$net_salary', '$pay_date', '$status', '$username', '$designation')";
 
         if($conn->query($sql))
         {
@@ -55,12 +56,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
       Basic Salary: <input type="number" name="basic_salary" id="basic_salary" required min="1" title="Salary must be greater than 0.">
       Allowance: <input type="number" name="allowance" id="allowance" required min="0" step="0.01" title="Cannot be negative.">
       Deductions: <input type="number" name="deductions" id="deductions" required min="0" step="0.01" title="Cannot be negative.">
+      Designation: <input type="text" name="designation" id="designation" pattern="[A-Za-z\s]+" title="Only letters and spaces allowed." required>
       Pay Date: <input type="date" name="pay_date" id="pay_date" required>
       Status: <select name="status" id="status" required>
         <option value="Unpaid">Unpaid</option>
         <option value="Paid">Paid</option>
         </select>
-    </div>
+</div>
     <button type="submit">Add Payroll</button>
   </form>
 </div>

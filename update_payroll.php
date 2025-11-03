@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         $net_salary = $basic_salary + $allowance - $deductions;
         $pay_date = $_POST['pay_date'];
         $status = $_POST['status'];
+        $designation = $_POST['designation'];
 
     if ($basic_salary <= 0 || $allowance < 0 || $deductions < 0) 
     {
@@ -31,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     } 
     else 
     {
-        $sql = "UPDATE payroll SET basic_salary='$basic_salary', allowance='$allowance', deductions='$deductions', net_salary='$net_salary', pay_date='$pay_date', status='$status' WHERE id=$id";
+        $sql = "UPDATE payroll SET basic_salary='$basic_salary', allowance='$allowance', deductions='$deductions', net_salary='$net_salary', pay_date='$pay_date', status='$status', designation='$designation' WHERE id=$id";
         if($conn->query($sql))
         {
             echo "<h1>Payroll updated successfully.</h1>";
@@ -50,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
   Basic Salary: <input type="number" name="basic_salary" value="<?php echo $row['basic_salary']; ?>" min="1" title="Salary must be greater than 0." required>
   Allowance: <input type="number" name="allowance" value="<?php echo $row['allowance']; ?>" min="0" step="0.01" title="Cannot be negative." required>
   Deductions: <input type="number" name="deductions" value="<?php echo $row['deductions']; ?>" min="0" step="0.01" title="Cannot be negative." required>
+  Designation: <input type="text" name="designation" id="designation" pattern="[A-Za-z\s]+"  value="<?php echo $row['designation']; ?>" title="Only letters and spaces allowed." required>
   Pay Date: <input type="date" name="pay_date" value="<?php echo $row['pay_date']; ?>" required>
   Status:
       <select name="status" id="status" required>
